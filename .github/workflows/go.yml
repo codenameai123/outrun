@@ -1,0 +1,38 @@
+name: Go Build Windows Binary
+
+on:
+  push:
+    branches: [ "1.1.4_work", "master" ]
+  pull_request:
+    branches: [ "1.1.4_work", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.16'
+
+    - name: Setup Go Module and Replace
+      run: |
+        rm -f go.mod go.sum
+        go mod init github.com/fluofoxxo/outrun
+        echo "replace github.com/fluofoxxo/outrun => ./" >> go.mod
+        go get golang.org/x/sys@v0.1.0
+
+    - name: Build Windows Executable
+      env:
+        GOOS: windows
+        GOARCH: amd64
+      run: go build -o outrun.exe main1.go
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: outrun-windows-server
+        path: outrun.exe
