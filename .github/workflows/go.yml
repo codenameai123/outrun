@@ -1,10 +1,6 @@
 name: Go Build Windows Binary
 
-on:
-  push:
-    branches: [ "1.1.4_work", "master" ]
-  pull_request:
-    branches: [ "1.1.4_work", "master" ]
+on: [push, pull_request]
 
 jobs:
   build:
