@@ -12,14 +12,14 @@ type BaseResponse struct {
 }
 
 func NewBaseResponse(base responseobjs.BaseInfo) BaseResponse {
-	return BaseResponse{
-		base,
-		"050",
-		"2.0.3",
-		"15",
-		"017",
-		"2.0.3",
-	}
+    return BaseResponse{
+        base,
+        "041",    
+        "1.1.4",  
+        "15",     
+        "017",   
+        "1.1.4",  
+    }
 }
 
 type NextVersionResponse struct {
