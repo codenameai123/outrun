@@ -16,7 +16,7 @@ func NewBaseResponse(base responseobjs.BaseInfo) BaseResponse {
         base,
         "041",    
         "1.1.4",  
-        "15",     
+        "11",     
         "017",   
         "1.1.4",  
     }
