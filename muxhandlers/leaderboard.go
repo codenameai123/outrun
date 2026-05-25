@@ -58,10 +58,13 @@ func GetLeagueData(helper *helper.Helper) {
 		return
 	}
 	mode := request.Mode
-	baseInfo := helper.BaseInfo(emess.OK, status.OK)
-	response := responses.DefaultLeagueData(baseInfo, mode)
-	err = helper.SendResponse(response)
-	if err != nil {
-		helper.InternalErr("Error sending response", err)
-	}
+    baseInfo := helper.BaseInfo(emess.OK, status.OK)
+    
+    
+    response := responses.NewBaseResponse(baseInfo) 
+    
+    err = helper.SendResponse(response)
+    if err != nil {
+        helper.InternalErr("Error sending response", err)
+    }
 }
